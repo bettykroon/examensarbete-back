@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 require('dotenv').config({path: './secret.env'});
 const cors = require('cors');
-const PORT = process.env.PORT || 3030;
+const PORT = 3030;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
