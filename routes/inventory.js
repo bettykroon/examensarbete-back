@@ -54,4 +54,17 @@ router.put('/update', (req, res) => {
   )
 })
 
+router.post('/addNewCocktail', (req, res) => {
+  console.log(req.body);
+  req.app.locals.db.collection("inventory").insertOne({
+    drinkName: req.body.drinkName, 
+    category: req.body.category, 
+    inStock: req.body.inStock, 
+    quantity: req.body.quantity, 
+    visible: req.body.visible,
+    price: req.body.price,
+    description: req.body.description
+  })
+})
+
 module.exports = router;

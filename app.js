@@ -7,12 +7,11 @@ const cors = require('cors');
 const PORT = 3030;
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var inventoryRouter = require('./routes/inventory');
 var klarnaRouter = require('./routes/klarna');
 var adminRouter = require('./routes/admin');
 
 var app = express();
-
 app.use(cors({origin: true})); 
 app.use(logger('dev'));
 app.use(express.json());
@@ -21,9 +20,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/inventory', inventoryRouter);
 app.use('/klarna', klarnaRouter);
 app.use('/admin', adminRouter);
+
+app.use('/uploads', express.static('uploads'));
 
 const MongoClient = require('mongodb').MongoClient;
 
